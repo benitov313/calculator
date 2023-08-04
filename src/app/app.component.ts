@@ -19,7 +19,6 @@ export class AppComponent {
 
   handleNumberClick(value: string) {
     if (this.operator === '=') {
-      // If the previous operation was completed, reset everything and start a new calculation
       this.currentInput = value;
       this.operator = '';
       this.history = [];
@@ -33,12 +32,10 @@ export class AppComponent {
   handleOperatorClick(operator: string) {
     if (this.currentInput !== '0') {
       if (this.operator !== '') {
-        // If there was a previous operator, calculate the result so far and continue with the new operator
         this.calculateResult();
         this.operator = operator;
         this.history.push(this.operator);
       } else {
-        // If this is the first operator, store the current input and operator
         this.operator = operator;
         this.previousInput = this.currentInput;
         this.history.push(this.previousInput, this.operator);
